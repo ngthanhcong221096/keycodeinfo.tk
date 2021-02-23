@@ -2,11 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KeyCodeInfo.tk</title>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JavaScript Event KeyCodes">
+    <meta name="twitter:description" content="Keycode testing tool - which keys map to which keycodes?">
+    <meta name="twitter:creator" content="@ntcong">
+    <meta name="twitter:image" content="https://cdn1.imggmi.com/uploads/2019/7/12/f6b03f5628f7850649714200ab517a52-full.png">
+    <link rel="stylesheet" href="style.css?v=23022021">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" />
+    <link rel="icon" href="data:image/png;base64,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">
 </head>
 <body>
-    <h1>KeyCodeInfo.tk hihi</h1>
-</body>
+    <canvas width="128" height="128" hidden></canvas>
+    <div class="display">
+      <table class="table hide">
+        <thead>
+          <tr>
+            <th>Key Code</th>
+            <th>Key</th>
+          </tr>
+        </thead>
+        <tbody class="table-body">
+        </tbody>
+      </table>
+      <div class="wrap" aria-live="polite" aria-atomic="true">
+        <p class="keycode-display"></p>
+        <p class="text-display">Press any key to get the JavaScript event keycode</p>
+        <div class="cards hide">
+          <div class="card item-key">
+            <div class="card-header">event.key</div>
+            <div class="card-main">
+              <div class="main-description">key</div>
+            </div>
+          </div>
+          <div class="card item-location">
+            <div class="card-header">event.location
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/location" target="_blank" rel="noopener"
+                class="more-info"></a>
+            </div>
+            <div class="card-main">
+              <div class="main-description">location</div>
+            </div>
+          </div>
+          <div class="card item-which">
+            <div class="card-header">
+              event.which
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent" target="_blank" rel="noopener"
+                class="deprecated-link">(deprecated)</a>
+            </div>
+            <div class="card-main">
+              <div class="main-description">which</div>
+            </div>
+          </div>
+          <div class="card item-code">
+            <div class="card-header">event.code</div>
+            <div class="card-main">
+              <div class="main-description">code</div>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-input">
+        </div>
+      </div>
+      <button onclick={toggleTable()} class="table-toggle-button">Table</button>
+    </div>
+  
+    <span class="love">Made with love by
+      <a href="https://wesbos.com" target="_blank" rel="noopener">Wes Bos</a> — fork or suggest edits on
+      <a href="https://github.com/wesbos/keycodes" target="_blank" rel="noopener">GitHub</a> —
+  
+      <a href="https://twitter.com/wesbos" class="twitter-follow-button" data-show-count="false" target="_blank" rel="noopener">Follow
+        @wesbos</a>
+  
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://keycode.info" data-text="Nice tool for finding JavaScript event keycodes"
+        data-via="wesbos" data-related="wesbos" target="_blank" rel="noopener">Tweet</a>
+  
+  
+    </span>
+  
+    <script type='text/javascript'>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./service-worker.js');
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <script src="scripts.js?v=23022021"></script>
+    <!-- <script src="google-analytics.js"></script> -->
+    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+  </body>
 </html>
